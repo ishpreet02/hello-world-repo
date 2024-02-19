@@ -1,13 +1,15 @@
 on:
   pull_request:
+    types: [opened]
 
 jobs:
-  comment:
+  test:
     runs-on: ubuntu-latest
     steps:
-      - uses: github-actions-up-and-running/pr-comment@v1.0.0
+      - uses: actions/checkout@v2 
+      - uses: ankur12-1610/pull-request-action@master
         with:
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
-          message: atlantis plan
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          COMMENT_TEXT: 'atlantis plan'
           
         
