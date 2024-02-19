@@ -1,15 +1,16 @@
-on:
-  pull_request:
-    types: [opened]
+on: pull_request
 
 jobs:
-  test:
+  example_comment_pr:
     runs-on: ubuntu-latest
+    name: An example job to comment a PR
+    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
-      - uses: actions/checkout@v2 
-      - uses: ankur12-1610/pull-request-action@master
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Comment PR
+        uses: thollander/actions-comment-pull-request@v2
         with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          COMMENT_TEXT: 'atlantis plan'
-          
-        
+          message: |
+            Hello world ! :wav
