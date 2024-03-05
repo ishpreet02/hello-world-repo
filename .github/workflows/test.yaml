@@ -15,7 +15,7 @@ jobs:
           script: |
             const { owner, repo } = context.repo;
             const { number } = context.issue;
-            const message = 'Thank you for submitting this pull request! 🚀';
+            const message = 'atlantis plan';
             github.issues.createComment({
               owner,
               repo,
