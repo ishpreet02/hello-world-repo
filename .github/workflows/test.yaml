@@ -6,11 +6,12 @@ on:
 jobs:
   comment:
     runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
     steps:
       - name: Add a comment to the pull request
         uses: actions/github-script@v4
         with:
-          github-token: ${{ secrets.PAT_TOKEN }}
           script: |
             const { owner, repo } = context.repo;
             const { number } = context.issue;
